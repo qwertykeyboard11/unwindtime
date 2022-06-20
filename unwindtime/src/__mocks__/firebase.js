@@ -1,7 +1,19 @@
-const firebase = jest.genMockFromModule('firebase');
-firebase.initializeApp = jest.fn();
-firebase.getFirestore= jest.fn();
-firebase.getStorage = jest.fn();
-firebase.getAuth = jest.fn();
-firebase.getMessaging= jest.fn();
-module.exports = firebase;
+const authObjectMock = {
+  createUserAndRetrieveDataWithEmailAndPassword: jest.fn(() => Promise.resolve(true)),
+  sendPasswordResetEmail: jest.fn(() => Promise.resolve(true)),
+  signInAndRetrieveDataWithEmailAndPassword: jest.fn(() => Promise.resolve(true)),
+  fetchSignInMethodsForEmail: jest.fn(() => Promise.resolve(true)),
+  signOut: jest.fn(() => {
+    Promise.resolve(true);
+  }),
+  onAuthStateChanged: jest.fn(),
+  currentUser: {
+    sendEmailVerification: jest.fn(() => Promise.resolve(true)),
+  },
+  // getMessaging: jest.fn(() => Promise.resolve(true)),
+  addListener: jest.fn(),
+  removeListener: jest.fn(),
+};
+const authMock = jest.fn(() => authObjectMock);
+
+export { authMock };
