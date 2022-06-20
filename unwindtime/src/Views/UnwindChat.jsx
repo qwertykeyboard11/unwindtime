@@ -36,32 +36,32 @@ function UnwindChat() {
 
   const [formValue, setFormValue] = useState('');
 
-  const sendPush = async (chat) => {
-    const body = {
-      unwindID: unwindID,
-      chat: chat,
-    };
+  // const sendPush = async (chat) => {
+  //   const body = {
+  //     unwindID: unwindID,
+  //     chat: chat,
+  //   };
 
-    const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
+  //   const myHeaders = new Headers();
+  //   myHeaders.append('Content-Type', 'application/json');
 
-    var raw = JSON.stringify(body);
+  //   var raw = JSON.stringify(body);
 
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow',
-    };
+  //   var requestOptions = {
+  //     method: 'POST',
+  //     headers: myHeaders,
+  //     body: raw,
+  //     redirect: 'follow',
+  //   };
 
-    fetch(
-      'https://us-central1-unwind-time.cloudfunctions.net/sendHttpPushNotificationMultiple',
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log('error', error));
-  };
+  //   fetch(
+  //     'https://us-central1-unwind-time.cloudfunctions.net/sendHttpPushNotificationMultiple',
+  //     requestOptions
+  //   )
+  //     .then((response) => response.text())
+  //     .then((result) => console.log(result))
+  //     .catch((error) => console.log('error', error));
+  // };
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -83,7 +83,7 @@ function UnwindChat() {
       registrationTokens: arrayUnion(profile.token),
     });
 
-    sendPush(chat);
+    // sendPush(chat);
 
     setFormValue('');
     dummy.current.scrollIntoView({ behavior: 'smooth' });
